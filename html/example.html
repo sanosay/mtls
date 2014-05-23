@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Ehlo</title>
+		<meta name="description" content="Ehlo page">
+		<meta name="author" content="Sanosay">
+
+
+	</head>
+	<body>
+		<div id="content">
+		   <p>
+			   <a href="http://google.com">Google</a>
+		   </p>
+		   <p>
+			   <a href="http://yahoo.com">Yahoo</a>
+		   </p>
+		</div>
+
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#content a').attr('target','_blank');
+				/*
+					OR : 
+					$('#content a').each(function(){
+						$(this).attr('target','_blank');
+					});
+				*/
+			});
+		</script>
+	</body>
+</html>
