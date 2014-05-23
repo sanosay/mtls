@@ -176,9 +176,71 @@ class UrlHelperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('asdf=1',$actual['query']);
         $this->assertEquals('asd',$actual['fragment']);
         $this->assertEquals('',$actual['remain']);
-        
        
-
-       
+    }
+    
+    /**
+     * Test scheme extraction
+     */
+    public function testShemeExtraction(){
+        $url = 'http://www.google.com';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_SCHEME);
+        $this->assertEquals('http',$actual);
+    }
+    /**
+     * Test username extraction
+     */
+    public function testUsernameExtraction(){
+        $url = 'http://test@www.google.com';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_USER);
+        $this->assertEquals('test',$actual);
+    }
+    /**
+     * Test password extraction
+     */
+    public function testPasswordExtraction(){
+        $url = 'http://test:123@www.google.com';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_PASS);
+        $this->assertEquals('123',$actual);
+    }
+    /**
+     * Test host extraction
+     */
+    public function testHostExtraction(){
+        $url = 'http://www.google.com';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_HOST);
+        $this->assertEquals('www.google.com',$actual);
+    }
+    /**
+     * Test port extraction
+     */
+    public function testPortExtraction(){
+        $url = 'http://www.google.com:80';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_PORT);
+        $this->assertEquals(80,$actual);
+    }
+     /**
+     * Test path extraction
+     */
+    public function testPathExtraction(){
+        $url = 'http://www.google.com:80/a/normal/path';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_PATH);
+        $this->assertEquals('/a/normal/path',$actual);
+    }
+    /**
+     * Test query extraction
+     */
+    public function testQueryExtraction(){
+        $url = 'http://www.google.com:80/a/normal/path?aquery';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_QUERY);
+        $this->assertEquals('aquery',$actual);
+    }
+    /**
+     * Test fragment extraction
+     */
+    public function testFragmentExtraction(){
+        $url = 'http://www.google.com:80/a/normal/path?aquery#afragment';
+        $actual = \com\snsp\UrlHelper::ParseUrl($url, \com\snsp\UrlHelper::$URL_FRAGMENT);
+        $this->assertEquals('afragment',$actual);
     }
 }

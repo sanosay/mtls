@@ -2,6 +2,7 @@
 
 namespace com\snsp;
 
+
 /**
  * Represents a utility class containing URL 
  * specific helper methods
@@ -10,16 +11,16 @@ namespace com\snsp;
  */
 class UrlHelper {
 
-    const URL_COMPONENTS = -1;
-    const URL_SCHEME = 1;
-    const URL_HOST = 2;
-    const URL_PORT = 3;
-    const URL_USER = 4;
-    const URL_PASS = 5;
-    const URL_PATH = 6;
-    const URL_QUERY = 7;
-    const URL_FRAGMENT = 8;
-    const VALID_URL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&\'()*+,;=%';
+    public static $URL_COMPONENTS = -1;
+    public static $URL_SCHEME = 1;
+    public static $URL_HOST = 2;
+    public static $URL_PORT = 3;
+    public static $URL_USER = 4;
+    public static $URL_PASS = 5;
+    public static $URL_PATH = 6;
+    public static $URL_QUERY = 7;
+    public static $URL_FRAGMENT = 8;
+    public static $VALID_URL_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&\'()*+,;=%';
 
     
 
@@ -29,11 +30,11 @@ class UrlHelper {
      * @param int $components  A specific component from the provided url
      * returns 
      */
-    public static function ParseUrl($str, $components = UrlHelper::URL_COMPONENTS) {
+    public static function ParseUrl($str, $components = -1) {
 
         for ($i = 0; $i < strlen($str); $i++) {
 
-            if (strpos(UrlHelper::VALID_URL_CHARS, $str[$i]) <0) {
+            if (strpos(UrlHelper::$VALID_URL_CHARS, $str[$i]) <0) {
                 $str[$i] = '_';
             }
         }
@@ -82,23 +83,23 @@ class UrlHelper {
             }
             $str = $queryFragment['remain'];
         }
-        if ($components == UrlHelper::URL_COMPONENTS) {
+        if ($components == UrlHelper::$URL_COMPONENTS) {
             return $retVal;
-        } else if ($components == UrlHelper::URL_SCHEME) {
+        } else if ($components == UrlHelper::$URL_SCHEME) {
             return $retVal['scheme'];
-        } else if ($components == UrlHelper::URL_HOST) {
+        } else if ($components == UrlHelper::$URL_HOST) {
             return $retVal['host'];
-        } else if ($components == UrlHelper::URL_PORT) {
+        } else if ($components == UrlHelper::$URL_PORT) {
             return $retVal['port'];
-        } else if ($components == UrlHelper::URL_USER) {
+        } else if ($components == UrlHelper::$URL_USER) {
             return $retVal['user'];
-        } else if ($components == UrlHelper::URL_PASS) {
+        } else if ($components == UrlHelper::$URL_PASS) {
             return $retVal['pass'];
-        } else if ($components == UrlHelper::URL_PATH) {
+        } else if ($components == UrlHelper::$URL_PATH) {
             return $retVal['path'];
-        } else if ($components == UrlHelper::URL_QUERY) {
+        } else if ($components == UrlHelper::$URL_QUERY) {
             return $retVal['query'];
-        } else if ($components == UrlHelper::URL_FRAGMENT) {
+        } else if ($components == UrlHelper::$URL_FRAGMENT) {
             return $retVal['fragment'];
         }
 
@@ -260,3 +261,4 @@ class UrlHelper {
     }
 
 }
+
