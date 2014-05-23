@@ -82,23 +82,23 @@ class UrlHelper {
             }
             $str = $queryFragment['remain'];
         }
-        if (UrlHelper::URL_COMPONENTS) {
+        if ($components == UrlHelper::URL_COMPONENTS) {
             return $retVal;
-        } else if (UrlHelper::URL_SCHEME) {
+        } else if ($components == UrlHelper::URL_SCHEME) {
             return $retVal['scheme'];
-        } else if (UrlHelper::URL_HOST) {
+        } else if ($components == UrlHelper::URL_HOST) {
             return $retVal['host'];
-        } else if (UrlHelper::URL_PORT) {
+        } else if ($components == UrlHelper::URL_PORT) {
             return $retVal['port'];
-        } else if (UrlHelper::URL_USER) {
+        } else if ($components == UrlHelper::URL_USER) {
             return $retVal['user'];
-        } else if (UrlHelper::URL_PASS) {
+        } else if ($components == UrlHelper::URL_PASS) {
             return $retVal['pass'];
-        } else if (UrlHelper::URL_PATH) {
+        } else if ($components == UrlHelper::URL_PATH) {
             return $retVal['path'];
-        } else if (UrlHelper::URL_QUERY) {
+        } else if ($components == UrlHelper::URL_QUERY) {
             return $retVal['query'];
-        } else if (UrlHelper::URL_FRAGMENT) {
+        } else if ($components == UrlHelper::URL_FRAGMENT) {
             return $retVal['fragment'];
         }
 
